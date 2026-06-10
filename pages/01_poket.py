@@ -1,110 +1,110 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="MBTI 포켓몬 추천",
-    page_icon="⚡",
+    page_title="MBTI 포켓몬 캐릭터 추천",
+    page_icon="🎮",
     layout="centered"
 )
 
-st.title("🎮 MBTI 포켓몬 추천")
-st.markdown("나의 MBTI와 가장 잘 어울리는 포켓몬은 누구일까요? 🐾")
+st.title("🎮 MBTI 포켓몬 캐릭터 추천")
+st.write("MBTI를 선택하면 나와 닮은 포켓몬 캐릭터와 성격을 알려줘요! ✨")
 
 pokemon_data = {
+
     "INTJ": {
-        "name": "뮤츠",
+        "pokemon": "뮤츠",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/150.png",
-        "personality": "지적이고 전략적이며 독립적인 성향을 가진 강력한 포켓몬입니다.",
-        "reason": "INTJ는 미래를 계획하고 논리적으로 행동하는 전략가 유형이라 뮤츠와 잘 어울립니다."
+        "personality": "강력한 카리스마와 뛰어난 전략성을 가진 포켓몬입니다. 깊이 생각하고 목표를 끝까지 밀고 나가는 모습이 INTJ와 닮았습니다."
     },
+
     "INTP": {
-        "name": "후딘",
-        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/065.png",
-        "personality": "높은 지능과 분석력을 가진 포켓몬입니다.",
-        "reason": "INTP의 탐구심과 분석 능력이 후딘의 이미지와 닮았습니다."
+        "pokemon": "메타몽",
+        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png",
+        "personality": "창의적이고 호기심이 많습니다. 새로운 가능성을 탐구하는 INTP의 성향과 잘 어울립니다."
     },
+
     "ENTJ": {
-        "name": "리자몽",
+        "pokemon": "리자몽",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png",
-        "personality": "카리스마와 리더십이 뛰어난 포켓몬입니다.",
-        "reason": "ENTJ의 강한 추진력과 자신감이 리자몽과 잘 맞습니다."
+        "personality": "자신감 있고 리더십이 강합니다. 도전 정신이 뛰어난 ENTJ를 대표합니다."
     },
+
     "ENTP": {
-        "name": "팬텀",
-        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/094.png",
-        "personality": "창의적이고 장난기 넘치는 포켓몬입니다.",
-        "reason": "ENTP 특유의 재치와 아이디어가 팬텀의 이미지와 비슷합니다."
+        "pokemon": "고라파덕",
+        "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/054.png",
+        "personality": "엉뚱하지만 기발한 아이디어가 많습니다. ENTP 특유의 창의성이 돋보입니다."
     },
+
     "INFJ": {
-        "name": "루기아",
+        "pokemon": "루기아",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/249.png",
-        "personality": "신비롭고 깊은 통찰력을 가진 전설의 포켓몬입니다.",
-        "reason": "INFJ의 이상주의적이고 배려심 있는 모습과 잘 어울립니다."
+        "personality": "신비롭고 통찰력이 깊습니다. 타인을 배려하는 INFJ와 잘 어울립니다."
     },
+
     "INFP": {
-        "name": "이브이",
+        "pokemon": "이브이",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/133.png",
-        "personality": "순수하고 가능성이 무한한 포켓몬입니다.",
-        "reason": "INFP의 따뜻함과 상상력이 이브이와 닮았습니다."
+        "personality": "따뜻하고 상상력이 풍부합니다. 다양한 가능성을 가진 INFP의 모습을 보여줍니다."
     },
+
     "ENFJ": {
-        "name": "피카츄",
+        "pokemon": "피카츄",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png",
-        "personality": "친절하고 주변을 밝게 만드는 포켓몬입니다.",
-        "reason": "ENFJ의 사교성과 리더십을 대표합니다."
+        "personality": "밝고 친절하며 주변 사람들에게 긍정적인 에너지를 전합니다."
     },
+
     "ENFP": {
-        "name": "토게피",
+        "pokemon": "토게피",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/175.png",
-        "personality": "밝고 긍정적인 에너지를 가진 포켓몬입니다.",
-        "reason": "ENFP의 활발함과 창의성이 토게피와 잘 맞습니다."
+        "personality": "호기심이 많고 활발합니다. 사람들에게 행복을 전하는 ENFP와 닮았습니다."
     },
+
     "ISTJ": {
-        "name": "거북왕",
+        "pokemon": "거북왕",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/009.png",
-        "personality": "책임감 있고 신뢰할 수 있는 포켓몬입니다.",
-        "reason": "ISTJ의 성실함과 안정감이 잘 드러납니다."
+        "personality": "성실하고 책임감이 강합니다. 믿음직한 ISTJ를 상징합니다."
     },
+
     "ISFJ": {
-        "name": "해피너스",
+        "pokemon": "해피너스",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/242.png",
-        "personality": "남을 돕고 보살피는 것을 좋아하는 포켓몬입니다.",
-        "reason": "ISFJ의 헌신적이고 따뜻한 성격과 닮았습니다."
+        "personality": "배려심이 깊고 따뜻합니다. 다른 사람을 잘 챙기는 ISFJ와 닮았습니다."
     },
+
     "ESTJ": {
-        "name": "보스로라",
+        "pokemon": "보스로라",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/306.png",
-        "personality": "강한 책임감과 추진력을 가진 포켓몬입니다.",
-        "reason": "ESTJ의 조직력과 리더십을 상징합니다."
+        "personality": "강한 책임감과 리더십을 가진 든든한 포켓몬입니다."
     },
+
     "ESFJ": {
-        "name": "푸린",
+        "pokemon": "푸린",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/039.png",
-        "personality": "친근하고 사람들과 함께하는 것을 좋아합니다.",
-        "reason": "ESFJ의 따뜻한 사교성이 잘 드러납니다."
+        "personality": "사교적이고 다정합니다. 사람들과 어울리는 것을 좋아합니다."
     },
+
     "ISTP": {
-        "name": "루카리오",
+        "pokemon": "루카리오",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/448.png",
-        "personality": "침착하고 뛰어난 문제 해결 능력을 가진 포켓몬입니다.",
-        "reason": "ISTP의 실용성과 독립성을 상징합니다."
+        "personality": "냉철한 판단력과 뛰어난 문제 해결 능력을 가졌습니다."
     },
+
     "ISFP": {
-        "name": "나인테일",
+        "pokemon": "나인테일",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/038.png",
-        "personality": "우아하고 감성적인 매력을 가진 포켓몬입니다.",
-        "reason": "ISFP의 예술적 감각과 자유로운 영혼을 닮았습니다."
+        "personality": "우아하고 감성적이며 자신만의 개성이 뚜렷합니다."
     },
+
     "ESTP": {
-        "name": "괴력몬",
+        "pokemon": "괴력몬",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/068.png",
-        "personality": "에너지 넘치고 행동력이 뛰어난 포켓몬입니다.",
-        "reason": "ESTP의 도전 정신과 활동성을 보여줍니다."
+        "personality": "행동력이 뛰어나고 모험을 즐깁니다."
     },
+
     "ESFP": {
-        "name": "파이리",
+        "pokemon": "파이리",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png",
-        "personality": "열정적이고 사람들에게 사랑받는 포켓몬입니다.",
-        "reason": "ESFP의 밝고 즐거운 성격과 잘 어울립니다."
+        "personality": "열정적이고 에너지가 넘칩니다. 주변을 즐겁게 만드는 매력이 있습니다."
     }
 }
 
@@ -114,21 +114,20 @@ mbti = st.selectbox(
 )
 
 if mbti:
-    pokemon = pokemon_data[mbti]
+    data = pokemon_data[mbti]
 
     st.markdown("---")
-    st.subheader(f"✨ {mbti}에게 추천하는 포켓몬")
 
-    st.image(pokemon["image"], width=300)
+    st.subheader(f"🐾 {mbti}와 가장 닮은 포켓몬")
 
-    st.success(f"🐾 추천 포켓몬: {pokemon['name']}")
+    st.image(
+        data["image"],
+        width=250
+    )
 
-    st.markdown(f"""
-    ### 🌟 포켓몬 성격
-    {pokemon['personality']}
+    st.success(f"추천 포켓몬 : {data['pokemon']}")
 
-    ### 💡 추천 이유
-    {pokemon['reason']}
-    """)
+    st.write("### ✨ 성격 특징")
+    st.write(data["personality"])
 
     st.balloons()
