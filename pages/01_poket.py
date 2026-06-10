@@ -1,3 +1,4 @@
+```python
 import streamlit as st
 
 st.set_page_config(
@@ -14,7 +15,7 @@ pokemon_data = {
     "INTJ": {
         "pokemon": "뮤츠",
         "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/150.png",
-        "personality": "강력한 카리스마와 뛰어난 전략성을 가진 포켓몬입니다. 깊이 생각하고 목표를 끝까지 밀고 나가는 모습이 INTJ와 닮았습니다."
+        "personality": "강력한 카리스마와 전략성을 가진 포켓몬입니다. 목표를 세우면 끝까지 밀고 나가는 모습이 INTJ와 닮았습니다."
     },
 
     "INTP": {
@@ -122,7 +123,8 @@ if mbti:
 
     st.image(
         data["image"],
-        width=250
+        width=300,
+        caption=data["pokemon"]
     )
 
     st.success(f"추천 포켓몬 : {data['pokemon']}")
@@ -131,3 +133,4 @@ if mbti:
     st.write(data["personality"])
 
     st.balloons()
+```
